@@ -1,0 +1,9 @@
+#!/bin/sh
+
+unset SESSION_MANAGER
+unset DBUG_SESSION_BUS_ADDRESS
+
+xrdb $HOME/.Xresources
+/usr/bin/lxsession -s LXDE &
+vncconfig -iconic &
+
