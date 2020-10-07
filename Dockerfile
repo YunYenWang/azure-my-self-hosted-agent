@@ -21,19 +21,7 @@ RUN apt-get install -y python python-pip
 
 # 安裝 Virtual Framebuffer 模擬 x-window 環境，與 Firefox 瀏覽器
 RUN apt-get install -y xvfb
-
-# 安裝可以執行在 container 內的 x-window 環境，與 Firefox 瀏覽器
-###RUN apt-get install -y lxde-session
-###RUN apt-get install -y firefox
-
-# 設定 VNC Server 執行環境
-###RUN apt-get install -y tightvncserver
-###RUN mkdir -p /root/.vnc
-###RUN chmod 700 /root/.vnc
-###COPY ./vnc-passwd /root/.vnc/passwd
-###RUN chmod 600 /root/.vnc/passwd
-###COPY ./vnc-xstartup /root/.vnc/xstartup
-###RUN chmod +x /root/.vnc/xstartup
+RUN apt-get install -y firefox
 
 # 安裝 selenium
 RUN pip install selenium
