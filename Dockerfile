@@ -11,26 +11,29 @@ ENV https_proxy=http://proxy.cht.com.tw:8080
 ENV USER=root
 
 # 更新 Ubuntu 安裝套件來源網站位置
-RUN apt update
+RUN apt-get update
 
 # 安裝基本工具
-RUN apt install -y wget curl unzip openssh-client
+RUN apt-get install -y wget curl unzip openssh-client
 
 # 安裝 python 與 pip
-RUN apt install -y python python-pip
+RUN apt-get install -y python python-pip
+
+# 安裝 Virtual Framebuffer 模擬 x-window 環境，與 Firefox 瀏覽器
+RUN apt-get install -y xvfb
 
 # 安裝可以執行在 container 內的 x-window 環境，與 Firefox 瀏覽器
-RUN apt install -y lxde-session
-RUN apt install -y firefox
+###RUN apt-get install -y lxde-session
+###RUN apt-get install -y firefox
 
 # 設定 VNC Server 執行環境
-RUN apt install -y tightvncserver
-RUN mkdir -p /root/.vnc
-RUN chmod 700 /root/.vnc
-COPY ./vnc-passwd /root/.vnc/passwd
-RUN chmod 600 /root/.vnc/passwd
-COPY ./vnc-xstartup /root/.vnc/xstartup
-RUN chmod +x /root/.vnc/xstartup
+###RUN apt-get install -y tightvncserver
+###RUN mkdir -p /root/.vnc
+###RUN chmod 700 /root/.vnc
+###COPY ./vnc-passwd /root/.vnc/passwd
+###RUN chmod 600 /root/.vnc/passwd
+###COPY ./vnc-xstartup /root/.vnc/xstartup
+###RUN chmod +x /root/.vnc/xstartup
 
 # 安裝 selenium
 RUN pip install selenium
